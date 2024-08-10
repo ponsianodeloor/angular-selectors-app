@@ -6,6 +6,7 @@ import { CountriesPageComponent } from './pages/countries-page/countries-page.co
 import { SelectorPageComponent } from './pages/selector-page/selector-page.component';
 import {MaterialModule} from "../material/material.module";
 import { FavoriteFoodPageComponent } from './pages/favorite-food-page/favorite-food-page.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FavoriteFoodPageComponent } from './pages/favorite-food-page/favorite-f
   imports: [
     CommonModule,
     CountryRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class CountryModule { }

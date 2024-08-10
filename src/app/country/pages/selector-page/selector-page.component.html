@@ -3,13 +3,26 @@
 
 <div class="grid">
   <div class="col-12 sm:-m-1">
-    <label></label>
+    <form [formGroup]="myForm">
+      <mat-form-field>
+        <mat-label>Region</mat-label>
+        <mat-select formControlName="regions">
+          <mat-option value="africa">Africa</mat-option>
+          <!--@for (food of foods; track food) {-->
+          <!--<mat-option [value]="food.value">{{food.viewValue}}</mat-option>-->
+          <!--}-->
+        </mat-select>
+      </mat-form-field>
+    </form>
   </div>
   <div class="col-12 sm:m-1">
-
   </div>
 
 </div>
+
+<h3>Form</h3>
+<pre>{{myForm.value | json}}</pre>
+<p>its form valid? <strong>{{ myForm.valid }}</strong></p>
 
 <div class="grid">
   <div class="col-4">
