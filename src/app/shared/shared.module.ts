@@ -12,6 +12,9 @@ import { ErrorNotFoundPageComponent } from './pages/error-not-found-page/error-n
   imports: [
     CommonModule,
     SharedRoutingModule
+  ],
+  exports: [
+    ErrorNotFoundPageComponent
   ]
 })
 export class SharedModule { }
