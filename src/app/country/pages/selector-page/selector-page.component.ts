@@ -5,7 +5,7 @@ import {MatSelectChange} from "@angular/material/select";
 import {CountriesService} from "../../services/countries.service";
 import {Country} from "../../interfaces/Country";
 import {ToastrService} from "ngx-toastr";
-import {catchError, map, of, tap} from "rxjs";
+import {catchError, forkJoin, map, of, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-selector-page',
@@ -18,6 +18,7 @@ export class SelectorPageComponent implements OnInit {
   countries: Country[] = [];
   countryByCode: Country[] = [];
   borders: string[] = [];
+  //borders: { code: string; name: string }[] = [];
 
   myForm: FormGroup = new FormGroup({});
 
@@ -74,5 +75,42 @@ export class SelectorPageComponent implements OnInit {
       })
     ).subscribe();
   }
+
+  /*onCountryChange(event: MatSelectChange) {
+    const selectedCountry = event.value;
+    if (!selectedCountry) {
+      this.borders = [];
+      return;
+    }
+    this.countriesService.getCountryByCode(selectedCountry).pipe(
+      map(country => {
+        this.countryByCode = country;
+        const borderCodes = country[0]?.borders || [];
+        return borderCodes;
+      }),
+      switchMap(borderCodes => {
+        if (borderCodes.length === 0) {
+          return of([]);
+        }
+        return forkJoin(borderCodes.map(code => this.countriesService.getCountryByBorderCode(code)));
+      }),
+      map(borderCountries => {
+        this.borders = borderCountries.map((country, index) => ({
+          name: country?.name?.common || `Unknown-${index}`,
+          code: country?.cca3 || `Unknown-${index}`
+        }));
+        this.toastr.success('Country details and borders loaded successfully');
+      }),
+      catchError(error => {
+        this.toastr.error('Failed to load country details. Please try again later.');
+        console.error('Error:', error);
+        return of([]);
+      })
+    ).subscribe();
+  }
+
+  trackByCode(index: number, item: any): string {
+    return item.code;
+  }*/
 
 }

@@ -23,4 +23,8 @@ export class CountriesService {
     return this.http.get<Country[]>(`${this.apiRestCountries}/alpha/${code}`);
   }
 
+  getCountryByBorderCode(code: string): Observable<Country> {
+    return this.http.get<Country>(`${this.apiRestCountries}/alpha/${code}`);
+  }
+
 }

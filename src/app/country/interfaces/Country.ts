@@ -11,7 +11,7 @@ export interface Country {
   subregion:    string;
   latlng:       number[];
   landlocked:   boolean;
-  borders:      string[];
+  borders?:     string[];
   area:         number;
   flag:         string;
   population:   number;
