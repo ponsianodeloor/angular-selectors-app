@@ -3,6 +3,7 @@ import {RegionInterface} from "./Region.interface";
 export interface Country {
   name:         Name;
   status:       string;
+  cca3:         string;
   currencies:   Currencies;
   idd:          Idd;
   capital:      string[];

@@ -1,24 +1,44 @@
 <h1>Selectores anidados</h1>
 <hr>
 
-<div class="grid">
-  <div class="col-12 sm:-m-1">
-    <form [formGroup]="myForm">
+<form [formGroup]="myForm">
+  <div class="grid">
+    <div class="col-12 sm:-m-1">
       <mat-form-field>
         <mat-label>Region</mat-label>
         <mat-select formControlName="regions" (selectionChange)="onRegionChange($event)">
-          <mat-option value="-1">Seleccionar</mat-option>
+          <mat-option>Seleccionar</mat-option>
           @for (region of regions; track region) {
           <mat-option [value]="region.code">{{region.name}}</mat-option>
           }
         </mat-select>
       </mat-form-field>
-    </form>
-  </div>
-  <div class="col-12 sm:m-1">
-  </div>
+    </div>
+    <div class="col-12 sm:m-1" *ngIf="countries.length > 0">
+      <mat-form-field>
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="countries" (selectionChange)="onCountryChange($event)">
+          <mat-option>Seleccionar</mat-option>
+          @for (country of countries; track country) {
+          <mat-option [value]="country.cca3">{{country.name.common}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-12 sm:m-1" *ngIf="borders.length > 0">
+      <mat-form-field>
+        <mat-label>Borders</mat-label>
+        <mat-select formControlName="borders">
+          <mat-option>Seleccionar</mat-option>
+          @for (border of borders; track border) {
+          <mat-option [value]="border">{{border}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
 
-</div>
+    </div>
+  </div>
+</form>
 
 <h3>Form</h3>
 <pre>{{myForm.value | json}}</pre>
