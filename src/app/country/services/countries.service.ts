@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Country} from "../interfaces/Country";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, of} from "rxjs";
 import {environment} from "../../../environments/environment";
 
 @Injectable({
@@ -22,4 +22,5 @@ export class CountriesService {
   getCountryByCode(code: string): Observable<Country[]> {
     return this.http.get<Country[]>(`${this.apiRestCountries}/alpha/${code}`);
   }
+
 }
